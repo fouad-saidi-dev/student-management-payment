@@ -1,5 +1,4 @@
 package com.fouadev.server.dtos;
-
 import com.fouadev.server.entities.PaymentStatus;
 import com.fouadev.server.entities.PaymentType;
 import lombok.*;

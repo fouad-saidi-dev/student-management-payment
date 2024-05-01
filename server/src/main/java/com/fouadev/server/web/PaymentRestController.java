@@ -27,6 +27,7 @@ import java.util.UUID;
  @project : student-management-payment
 */
 @RestController
+@CrossOrigin("*")
 public class PaymentRestController {
     private StudentRepository studentRepository;
     private PaymentRepository paymentRepository;
