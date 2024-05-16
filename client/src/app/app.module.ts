@@ -22,13 +22,15 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatCard, MatCardModule} from "@angular/material/card";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthGuard} from "./guards/auth.guard";
 import {AuthorizationGuard} from "./guards/authorization.guard";
 import {HttpClientModule} from "@angular/common/http";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { NewPaymentComponent } from './new-payment/new-payment.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import {MatSortModule} from "@angular/material/sort";
     StudentsComponent,
     PaymentsComponent,
     DashboardComponent,
+    StudentDetailsComponent,
+    NewPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,7 @@ import {MatSortModule} from "@angular/material/sort";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,

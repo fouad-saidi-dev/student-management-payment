@@ -30,6 +30,4 @@ public class Student {
     private String code;
     private String programId;
     private String photo;
-//    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-//    private Collection<Payment> payments;
 }
