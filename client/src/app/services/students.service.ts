@@ -9,16 +9,29 @@ import {environment} from "../../environments/environment";
 })
 export class StudentsService {
 
+  baseUrl: string = 'http://localhost:8083'
+
   constructor(private http: HttpClient) {
   }
 
   public getAllPayments(): Observable<Array<Payment>> {
-    return this.http.get<Array<Payment>>(`http://localhost:8083/payments`);
+    return this.http.get<Array<Payment>>(`${this.baseUrl}/payments`);
   }
+
   public getAllStudents(): Observable<Array<Student>> {
-    return this.http.get<Array<Student>>(`http://localhost:8083/students`);
+    return this.http.get<Array<Student>>(`${this.baseUrl}/students`);
   }
-  public getStudentPayments(code:string): Observable<Array<Payment>> {
-    return this.http.get<Array<Payment>>(`http://localhost:8083/students/${code}/payments`);
+
+  public getStudentPayments(code: string): Observable<Array<Payment>> {
+    return this.http.get<Array<Payment>>(`${this.baseUrl}/students/${code}/payments`);
+  }
+
+  public savePayment(formData: any): Observable<Payment> {
+    return this.http.post<Payment>(`${this.baseUrl}/payments`, formData);
+  }
+
+  getPaymentDetails(paymentId: number) {
+    return this.http.get(`${this.baseUrl}/paymentFile/${paymentId}`,
+      {responseType: 'blob'})
   }
 }

@@ -1,5 +1,6 @@
 package com.fouadev.server.services;
 
+import com.fouadev.server.dtos.PaymentDTO;
 import com.fouadev.server.entities.Payment;
 import com.fouadev.server.entities.PaymentStatus;
 import com.fouadev.server.entities.PaymentType;
@@ -45,10 +46,7 @@ public class PaymentService {
     }
 
     public Payment savePayment(MultipartFile file,
-                               LocalDate date,
-                               double amount,
-                               PaymentType type,
-                               String studentCode) throws IOException {
+                               PaymentDTO paymentDTO) throws IOException {
         Path folderPath = Paths.get(System.getProperty("user.home"), "data", "payments");
         if (!Files.exists(folderPath)) {
             Files.createDirectories(folderPath);
@@ -56,12 +54,12 @@ public class PaymentService {
         String fileName = UUID.randomUUID().toString();
         Path filePath = Paths.get(System.getProperty("user.home"), "data", "payments", fileName + ".pdf");
         Files.copy(file.getInputStream(), filePath);
-        Student student = studentRepository.findByCode(studentCode);
+        Student student = studentRepository.findByCode(paymentDTO.getStudentCode());
         Payment payment = Payment.builder()
-                .date(date)
-                .type(type)
+                .date(paymentDTO.getDate())
+                .type(paymentDTO.getType())
                 .student(student)
-                .amount(amount)
+                .amount(paymentDTO.getAmount())
                 .file(filePath.toUri().toString())
                 .status(PaymentStatus.CREATED)
                 .build();

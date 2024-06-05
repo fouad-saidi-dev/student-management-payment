@@ -1,0 +1,17 @@
+mat-form-field {
+  display: block;
+  width: 50%;
+}
+.card-row {
+  display: flex;
+  gap: 16px; /* Space between cards */
+}
+mat-card{
+  flex: 1;
+}
+.pdf-viewer{
+  height: 100vh;
+  display: block;
+  margin: 0 auto;
+  max-width: 1200px;
+}

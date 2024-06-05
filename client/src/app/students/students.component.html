@@ -14,7 +14,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let student of students">
+        @for (student of students; track student) {
+<tr>
           <td>{{student.id}}</td>
           <td>{{student.firstName}}</td>
           <td>{{student.lastName}}</td>
@@ -24,6 +25,7 @@
             <button (click)="studentPayments(student)" mat-raised-button color="primary">Payments</button>
           </td>
         </tr>
+}
         </tbody>
       </table>
     </mat-card-content>

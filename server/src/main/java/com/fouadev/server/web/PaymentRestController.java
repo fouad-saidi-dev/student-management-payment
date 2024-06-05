@@ -1,5 +1,6 @@
 package com.fouadev.server.web;
 
+import com.fouadev.server.dtos.PaymentDTO;
 import com.fouadev.server.entities.Payment;
 import com.fouadev.server.entities.PaymentStatus;
 import com.fouadev.server.entities.PaymentType;
@@ -20,12 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-/*
- Created by : Fouad SAIDI on 22/04/2024
- @author : Fouad SAIDI
- @date : 22/04/2024
- @project : student-management-payment
-*/
+
 @RestController
 @CrossOrigin("*")
 public class PaymentRestController {
@@ -86,11 +82,8 @@ public class PaymentRestController {
 
     @PostMapping(path = "/payments", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Payment savePayment(@RequestParam MultipartFile file,
-                               LocalDate date,
-                               double amount,
-                               PaymentType type,
-                               String studentCode) throws IOException {
-        return this.paymentService.savePayment(file, date, amount, type, studentCode);
+                               PaymentDTO paymentDTO) throws IOException {
+        return this.paymentService.savePayment(file, paymentDTO);
     }
 
     @GetMapping(path = "/paymentFile/{paymentId}", produces = MediaType.APPLICATION_PDF_VALUE)
